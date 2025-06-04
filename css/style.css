@@ -1,0 +1,190 @@
+.off-screen-menu {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  max-width: 450px;
+  position: fixed;
+  top: 0;
+  right: -450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 5rem;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  transition: 0.3s ease;
+}
+
+.off-screen-menu.active {
+  left: 0;
+}
+
+nav {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  position: relative;
+}
+
+
+.ham-menu {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+
+.nav-title {
+  font-size: 1.8rem;
+  font-family: 'Black Bear', sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+
+.logo-header {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: auto;
+  border-radius: 15%;
+  object-fit: contain;
+}
+
+
+
+
+.ham-menu span {
+  height: 5px;
+  width: 100%;
+  background-color: white;
+  border-radius: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s ease;
+}
+
+.ham-menu span:nth-child(1) {
+  top: 25%;
+}
+.ham-menu span:nth-child(2) {
+  top: 50%;
+}
+.ham-menu span:nth-child(3) {
+  top: 75%;
+}
+
+.ham-menu.active span:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ham-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.ham-menu.active span:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+ul a h2 {
+    color: white;
+    font-family: 'Black Bear', sans-serif;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+ul a {
+    text-decoration: none;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: sans-serif;
+}
+
+.footer-section {
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer-section hr {
+  width: 50px;
+  margin: 0 auto 0.5rem;
+  border: 1px solid white;
+}
+
+.footer-section p {
+  margin: 0.3rem 0;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 0.5rem;
+}
+
+.social-icons img {
+  width: 30px;
+  margin: 0 10px;
+  filter: brightness(0) invert(1);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+}
+
+@font-face {
+  font-family: 'Black Bear';
+  src: url('fonts/BlackBear-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
