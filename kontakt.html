@@ -1,77 +1,156 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurant – Schwarzer Bären</title>
-    <link rel="icon" type="image/png" href="graphics/SB-Logo.png" />
-    <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant – Schwarzer Bären</title>
+  <link rel="icon" type="image/png" href="graphics/SB-Logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Minimal-Styles fürs Formular – kann in deine CSS wandern */
+    .contact-wrap { max-width: 720px; margin: 2rem auto; padding: 1rem; }
+    .contact-grid { display: grid; gap: 1rem; }
+    .contact-grid label { font-weight: 600; display: block; margin-bottom: .35rem; }
+    .contact-grid input, .contact-grid textarea, .contact-grid button {
+      width: 100%; padding: .8rem; border: 1px solid #ddd; border-radius: .5rem; font: inherit;
+    }
+    .contact-grid textarea { min-height: 10rem; resize: vertical; }
+    .contact-actions { display: flex; gap: .75rem; align-items: center; }
+    .btn-primary { cursor: pointer; border: none; background: #0b63e5; color: #fff; font-weight: 600; }
+    .btn-primary:disabled { opacity: .7; cursor: progress; }
+    .status { margin-top: .5rem; font-weight: 600; }
+    .status.ok { color: #0a7a0a; }
+    .status.err { color: #b00020; }
+    /* Honeypot unsichtbar */
+    .hp { position: absolute; left: -5000px; top: -5000px; }
+  </style>
 </head>
 
 <body>
-    <header class="sticky">
+  <header class="sticky">
+    <div class="off-screen-menu">
+      <ul>
+        <a href="index.html"><h2>Restaurant</h2></a>
+        <a href="lounge.html"><h2>Lounge</h2></a>
+        <a href="anlaese.html"><h2>Anlässe</h2></a>
+        <a href="ueber-uns.html"><h2>Über uns</h2></a>
+        <a href="kontakt.html"><h2>Kontakt</h2></a>
+      </ul>
+    </div>
+    <nav>
+      <div class="ham-menu"><span></span><span></span><span></span></div>
+      <h1 class="nav-title">Schwarzer Bären</h1>
+      <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzerbären">
+    </nav>
+  </header>
 
-        <div class="off-screen-menu">
-            <ul>
-                <a href="index.html">
-                    <h2>Restaurant</h2>
-                </a>
-                <a href="lounge.html">
-                    <h2>Lounge</h2>
-                </a>
-                <a href="anlaese.html">
-                    <h2>Anlässe</h2>
-                </a>
-                <a href="ueber-uns.html">
-                    <h2>Über uns</h2>
-                </a>
-                <a href="kontakt.html">
-                    <h2>Kontakt</h2>
-                </a>
-            </ul>
-        </div>
-        <nav>
-            <div class="ham-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <h1 class="nav-title">Schwarzer Bären</h1>
-            <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzerbären">
-        </nav>
-    </header>
+  <main class="contact-wrap">
+    <h1>Kontakt</h1>
 
-    <main>
-        <h1>Kontakt</h1>
-    </main>
+    <!-- Kontaktformular -->
+    <form id="contactForm" class="contact-grid" novalidate>
+      <div>
+        <label for="fromName">Ihr Name</label>
+        <input id="fromName" name="fromName" type="text" placeholder="Max Muster" maxlength="120" />
+      </div>
 
-    <footer class="footer">
-        <div class="footer-section">
-            <hr>
-            <h3>Adresse</h3>
-            <p>Speicherstrasse 151<br>9000 St. Gallen</p>
-            <a href="https://www.google.com/maps/place/Schwarzer+B%C3%A4ren/@47.4219992,9.4135086,455m/data=!3m3!1e3!4b1!5s0x479b1ee746b3195d:0xf196311fb4d80aaa!4m6!3m5!1s0x479b1ee7472365b7:0x397f3ca9e4b4723b!8m2!3d47.4219992!4d9.4160835!16s%2Fg%2F1tf5cql3?entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank">zu Google Maps →</a>
-        </div>
+      <div>
+        <label for="fromEmail">Ihre E-Mail *</label>
+        <input id="fromEmail" name="fromEmail" type="email" required placeholder="name@example.com" />
+      </div>
 
-        <div class="footer-section">
-            <hr>
-            <h3>Restaurant</h3>
-            <p>Mi–So<br>10:00 - 20:00</p>
-            <p>Unsere Küche steht Ihnen immer<br>von 10 Uhr bis 20 Uhr zur Verfügung.</p>
-        </div>
+      <div>
+        <label for="subject">Betreff</label>
+        <input id="subject" name="subject" type="text" placeholder="Reservierungsanfrage, Feedback, ..." maxlength="160" />
+      </div>
 
-        <div class="footer-section">
-            <hr>
-            <h3>Social-Seiten</h3>
-            <div class="social-icons">
-                <a href="#"><img src="graphics/instagram-icon.png" alt="Instagram"></a>
-                <a href="#"><img src="graphics/facebook-icon.png" alt="Facebook"></a>
-            </div>
-        </div>
-    </footer>
-    <script src="ham-menu.js"></script>
+      <div>
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="message" required placeholder="Ihre Nachricht an uns ..."></textarea>
+      </div>
+
+      <!-- Honeypot gegen Bots -->
+      <input class="hp" type="text" name="website" autocomplete="off" tabindex="-1" />
+
+      <div class="contact-actions">
+        <button id="sendBtn" class="btn-primary" type="submit">Nachricht senden</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-section">
+      <hr>
+      <h3>Adresse</h3>
+      <p>Speicherstrasse 151<br>9000 St. Gallen</p>
+      <a href="https://www.google.com/maps/place/Schwarzer+B%C3%A4ren/@47.4219992,9.4135086,455m/data=!3m3!1e3!4b1!5s0x479b1ee746b3195d:0xf196311fb4d80aaa!4m6!3m5!1s0x479b1ee7472365b7:0x397f3ca9e4b4723b!8m2!3d47.4219992!4d9.4160835!16s%2Fg%2F1tf5cql3?entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+         target="_blank">zu Google Maps →</a>
+    </div>
+
+    <div class="footer-section">
+      <hr>
+      <h3>Restaurant</h3>
+      <p>Mi–So<br>10:00 - 20:00</p>
+      <p>Unsere Küche steht Ihnen immer<br>von 10 Uhr bis 20 Uhr zur Verfügung.</p>
+    </div>
+
+    <div class="footer-section">
+      <hr>
+      <h3>Social-Seiten</h3>
+      <div class="social-icons">
+        <a href="#"><img src="graphics/instagram-icon.png" alt="Instagram"></a>
+        <a href="#"><img src="graphics/facebook-icon.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="ham-menu.js"></script>
+  <script>
+    // Client-seitiger Versand via sendmail.php (PHPMailer)
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('status');
+    const sendBtn = document.getElementById('sendBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // simple Frontend-Validierung
+      const email = form.fromEmail.value.trim();
+      const msg   = form.message.value.trim();
+      if (!email || !msg) {
+        statusEl.textContent = 'Bitte E-Mail und Nachricht ausfüllen.';
+        statusEl.className = 'status err';
+        return;
+      }
+
+      statusEl.textContent = 'Sende...';
+      statusEl.className = 'status';
+      sendBtn.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+        // Optional: name/subject mit in die Nachricht einbetten
+        // (serverseitig kannst du subject auch separat übernehmen)
+        const res = await fetch('sendmail.php', { method: 'POST', body: formData });
+        const data = await res.json();
+
+        if (data.ok) {
+          statusEl.textContent = '✅ Nachricht wurde versendet.';
+          statusEl.className = 'status ok';
+          form.reset();
+        } else {
+          statusEl.textContent = '❌ Fehler: ' + (data.error || 'Unbekannter Fehler');
+          statusEl.className = 'status err';
+        }
+      } catch (err) {
+        statusEl.textContent = '❌ Netzwerk-/Serverfehler.';
+        statusEl.className = 'status err';
+      } finally {
+        sendBtn.disabled = false;
+      }
+    });
+  </script>
 </body>
-
 </html>
