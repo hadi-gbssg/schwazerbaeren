@@ -8,47 +8,52 @@
   <link rel="stylesheet" href="css/style.css" />
 
   <style>
-    /* Minimal-Styles fürs Formular – kann in deine CSS wandern */
-    .contact-wrap { max-width: 720px; margin: 2rem auto; padding: 1rem; }
-    .contact-grid { display: grid; gap: 1rem; }
-    .contact-grid label { font-weight: 600; display: block; margin-bottom: .35rem; }
-    .contact-grid input, .contact-grid textarea, .contact-grid button {
-      width: 100%; padding: .8rem; border: 1px solid #ddd; border-radius: .5rem; font: inherit;
-    }
-    .contact-grid textarea { min-height: 10rem; resize: vertical; }
-    .contact-actions { display: flex; gap: .75rem; align-items: center; }
-    .btn-primary { cursor: pointer; border: none; background: #0b63e5; color: #fff; font-weight: 600; }
-    .btn-primary:disabled { opacity: .7; cursor: progress; }
-    .status { margin-top: .5rem; font-weight: 600; }
-    .status.ok { color: #0a7a0a; }
-    .status.err { color: #b00020; }
-    /* Honeypot unsichtbar */
-    .hp { position: absolute; left: -5000px; top: -5000px; }
+
   </style>
 </head>
 
 <body>
   <header class="sticky">
-    <div class="off-screen-menu">
-      <ul>
-        <a href="index.html"><h2>Restaurant</h2></a>
-        <a href="lounge.html"><h2>Lounge</h2></a>
-        <a href="anlaese.html"><h2>Anlässe</h2></a>
-        <a href="ueber-uns.html"><h2>Über uns</h2></a>
-        <a href="kontakt.html"><h2>Kontakt</h2></a>
-      </ul>
+    
+    <div class="off-screen-menu" id="mobileMenu">
+        <ul class="mobile-list">
+            <li><a href="index.html">Restaurant</a></li>
+            <li><a href="lounge.html">Lounge</a></li>
+            <li><a href="anlaese.html">Anlässe</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
     </div>
+
+    
     <nav>
-      <div class="ham-menu"><span></span><span></span><span></span></div>
-      <h1 class="nav-title">Schwarzer Bären</h1>
-      <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzerbären">
+        
+        <button class="ham-menu" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        
+        <h1 class="nav-title">Schwarzer Bären</h1>
+
+        
+        <ul class="top-nav">
+            <li><a href="index.html">Restaurant</a></li>
+            <li><a href="lounge.html">Lounge</a></li>
+            <li><a href="anlaese.html">Anlässe</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+
+        
+        <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzer Bären">
     </nav>
-  </header>
+</header>
+
 
   <main class="contact-wrap">
     <h1>Kontakt</h1>
 
-    <!-- Kontaktformular -->
+   
     <form id="contactForm" class="contact-grid" novalidate>
       <div>
         <label for="fromName">Ihr Name</label>
@@ -70,7 +75,7 @@
         <textarea id="message" name="message" required placeholder="Ihre Nachricht an uns ..."></textarea>
       </div>
 
-      <!-- Honeypot gegen Bots -->
+      
       <input class="hp" type="text" name="website" autocomplete="off" tabindex="-1" />
 
       <div class="contact-actions">
@@ -100,7 +105,7 @@
       <hr>
       <h3>Social-Seiten</h3>
       <div class="social-icons">
-        <a href="#"><img src="graphics/instagram-icon.png" alt="Instagram"></a>
+        <a href="#"><img src="graphics/instagram-logo.png" alt="Instagram"></a>
         <a href="#"><img src="graphics/facebook-icon.png" alt="Facebook"></a>
       </div>
     </div>
@@ -137,15 +142,15 @@
         const data = await res.json();
 
         if (data.ok) {
-          statusEl.textContent = '✅ Nachricht wurde versendet.';
+          statusEl.textContent = 'Nachricht wurde versendet.';
           statusEl.className = 'status ok';
           form.reset();
         } else {
-          statusEl.textContent = '❌ Fehler: ' + (data.error || 'Unbekannter Fehler');
+          statusEl.textContent = 'Fehler: ' + (data.error || 'Unbekannter Fehler');
           statusEl.className = 'status err';
         }
       } catch (err) {
-        statusEl.textContent = '❌ Netzwerk-/Serverfehler.';
+        statusEl.textContent = 'Netzwerk-/Serverfehler.';
         statusEl.className = 'status err';
       } finally {
         sendBtn.disabled = false;

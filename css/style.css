@@ -1,91 +1,176 @@
+/* ===============================
+   Off-Screen Menü (Mobile)
+   =============================== */
 .off-screen-menu {
-  background-color: black;
-  height: 100vh;
-  width: 100%;
-  max-width: 450px;
   position: fixed;
-  top: 0;
-  right: -450px;
+  inset: 0;
+  /* top, right, bottom, left: 0 */
+  width: 100%;
+  height: 100%;
+  background-color: black;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 5rem;
   align-items: center;
+  padding-top: 5rem;
   text-align: center;
   font-size: 2rem;
-  transition: 0.3s ease;
+
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+  /* Start: versteckt */
+  z-index: 9999;
+  /* liegt über Header & Footer */
+  overflow-y: auto;
 }
 
 .off-screen-menu.active {
+  transform: translateX(0);
+  /* sichtbar */
+}
+
+.contact-wrap {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-grid label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: .35rem;
+}
+
+.contact-grid input,
+.contact-grid textarea,
+.contact-grid button {
+  width: 100%;
+  padding: .8rem;
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  font: inherit;
+}
+
+.contact-grid textarea {
+  min-height: 10rem;
+  resize: vertical;
+}
+
+.contact-actions {
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+}
+
+.btn-primary {
+  cursor: pointer;
+  border: none;
+  background: #0b63e5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-primary:disabled {
+  opacity: .7;
+  cursor: progress;
+}
+
+.status {
+  margin-top: .5rem;
+  font-weight: 600;
+}
+
+.status.ok {
+  color: #0a7a0a;
+}
+
+.status.err {
+  color: #b00020;
+}
+
+.hp {
+  position: absolute;
+  left: -5000px;
+  top: -5000px;
+}
+.contact-wrap,
+.contact-grid,
+.contact-grid label,
+.contact-grid input,
+.contact-grid textarea,
+.contact-grid button {
+  font-family: Arial, sans-serif;
+}
+
+/* ===============================
+   Header & Navigation
+   =============================== */
+header.sticky {
+  background-color: black;
+  width: 100%;
+  position: sticky;
+  top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 nav {
   padding: 1rem;
+  height: 70px;
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
   position: relative;
 }
 
-
+/* ===============================
+   Hamburger Menü Button
+   =============================== */
 .ham-menu {
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 10000;
+  /* über Menü */
 }
-
-
-.nav-title {
-  font-size: 1.8rem;
-  font-family: 'Black Bear', sans-serif;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
-
-
-.logo-header {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: auto;
-  border-radius: 15%;
-  object-fit: contain;
-}
-
-
-
 
 .ham-menu span {
-  height: 5px;
-  width: 100%;
+  height: 4px;
+  width: 70%;
   background-color: white;
   border-radius: 25px;
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   transition: 0.3s ease;
 }
 
 .ham-menu span:nth-child(1) {
   top: 25%;
 }
+
 .ham-menu span:nth-child(2) {
   top: 50%;
 }
+
 .ham-menu span:nth-child(3) {
   top: 75%;
 }
 
+/* Animation: Burger -> X */
 .ham-menu.active span:nth-child(1) {
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
@@ -100,24 +185,87 @@ nav {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+/* ===============================
+   Titel & Logo
+   =============================== */
+.nav-title {
+  font-size: 1.8rem;
+  font-family: 'Black Bear', sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.logo-header {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: auto;
+  border-radius: 15%;
+  object-fit: contain;
+}
+h1{
+  font-style: Arial;
+}
+
+/* ===============================
+   Links
+   =============================== */
 ul a h2 {
-    color: white;
-    font-family: 'Black Bear', sans-serif;
-    text-decoration: none;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+  color: white;
+  font-family: 'Black Bear', sans-serif;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 
 ul a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.footer {
+.mobile-list,
+.top-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-list li,
+.top-nav li {
+  margin: 0;
+}
+
+.mobile-list a,
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Black Bear', sans-serif;
+  font-size: 1.2rem;
+}
+
+.mobile-list a {
+  display: block;
+  padding: 0.5rem 0;
+}
+p {
+  font-style: Arial;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer.footer {
   background-color: black;
   color: white;
   text-align: center;
   padding: 2rem 1rem;
   font-family: sans-serif;
+  margin-top: auto;
+  width: 100%;
+  z-index: 100;
+  position: relative;
 }
 
 .footer-section {
@@ -160,14 +308,17 @@ ul a {
   filter: brightness(0) invert(1);
 }
 
-
+/* ===============================
+   Basics & Reset
+   =============================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -181,10 +332,158 @@ body {
 main {
   flex: 1;
 }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal zentriert */
+  justify-content: center; /* vertikal zentriert (optional) */
+  text-align: center;
+  min-height: 70vh; /* damit der Text mittig im Sichtbereich steht */
+  padding: 2rem;
+}
 
+main h1 {
+  margin-bottom: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main p {
+  max-width: 700px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ===============================
+   Fonts
+   =============================== */
 @font-face {
   font-family: 'Black Bear';
   src: url('fonts/BlackBear-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+}
+
+/* ===============================
+   Desktop Layout
+   =============================== */
+.top-nav {
+  display: none;
+  /* Mobile: unsichtbar */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+@media (min-width: 992px) {
+
+   .contact-wrap {
+    max-width: 900px;
+    background: #fafafa;
+    border-radius: 1rem;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .contact-grid label {
+    grid-column: span 2;
+    text-align: left;
+  }
+
+  .contact-grid input,
+  .contact-grid textarea {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+  }
+
+  .contact-grid textarea {
+    grid-column: span 2;
+  }
+
+  .contact-actions {
+    grid-column: span 2;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    background: #0b63e5;
+    transition: background 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: #094cb0;
+  }
+  .ham-menu {
+    display: none;
+  }
+
+  /* Burger verschwindet */
+  .off-screen-menu {
+    display: none !important;
+  }
+
+  /* Menü deaktiviert */
+
+  /* Header: auf Desktop zwei Zeilen (Titel oben, Nav unten) */
+  nav {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    /* übereinander statt nebeneinander */
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    height: auto;
+    /* Höhe anpassen */
+  }
+
+  /* Titel über Navigation */
+  .nav-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .top-nav a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Black Bear', sans-serif;
+    font-size: 1.2rem;
+  }
+
+  .top-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .logo-header {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    /* nach oben in die Ecke */
+    width: 50px;
+    height: auto;
+    border-radius: 15%;
+    object-fit: contain;
+  }
+  
 }

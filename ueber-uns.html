@@ -10,37 +10,42 @@
 </head>
 
 <body>
-    <header class="sticky">
+<header class="sticky">
+    <!-- Mobiles Offscreen-Menü -->
+    <div class="off-screen-menu" id="mobileMenu">
+        <ul class="mobile-list">
+            <li><a href="index.html">Restaurant</a></li>
+            <li><a href="lounge.html">Lounge</a></li>
+            <li><a href="anlaese.html">Anlässe</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </div>
 
-        <div class="off-screen-menu">
-            <ul>
-                <a href="index.html">
-                    <h2>Restaurant</h2>
-                </a>
-                <a href="lounge.html">
-                    <h2>Lounge</h2>
-                </a>
-                <a href="anlaese.html">
-                    <h2>Anlässe</h2>
-                </a>
-                <a href="ueber-uns.html">
-                    <h2>Über uns</h2>
-                </a>
-                <a href="kontakt.html">
-                    <h2>Kontakt</h2>
-                </a>
-            </ul>
-        </div>
-        <nav>
-            <div class="ham-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <h1 class="nav-title">Schwarzer Bären</h1>
-            <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzerbären">
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <!-- Hamburger Menü (nur Mobile) -->
+        <button class="ham-menu" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <!-- Titel -->
+        <h1 class="nav-title">Schwarzer Bären</h1>
+
+        <!-- Desktop Navigation -->
+        <ul class="top-nav">
+            <li><a href="index.html">Restaurant</a></li>
+            <li><a href="lounge.html">Lounge</a></li>
+            <li><a href="anlaese.html">Anlässe</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+
+        <!-- Logo -->
+        <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzer Bären">
+    </nav>
+</header>
+
 
     <main>
         <h1>Über uns</h1>
