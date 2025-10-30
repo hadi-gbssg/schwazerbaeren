@@ -1,25 +1,23 @@
-<?php 
-// config.php – Versand über Swizzonic Mailserver
+<?php
+// config.php – Versand über Gmail SMTP
 return [
-  // Empfänger
+  // Empfänger (wo die Nachricht ankommen soll)
   'to_email'   => 'info@schwarzer-baeren.ch',
-  'to_name'    => 'Restaurant Schwarzer Bären',
+  'to_name'    => 'jan Belohrasky',
 
-  // Absender (muss dieselbe Domain sein)
-  'from_email' => 'info@schwarzer-baeren.ch',
+  // Absender MUSS bei Gmail = deine Gmail-Adresse sein
+  'from_email' => 'h.j.toufayli@gmail.com',
   'from_name'  => 'Website Formular',
 
-  // SMTP-Konfiguration für Swizzonic
   'smtp' => [
-    'host'       => 'mail.swizzonic.ch',  // offizieller Mailserver von Swizzonic
-    'port'       => 587,                  // für STARTTLS
-    'encryption' => 'tls',                // bei Problemen alternativ 'ssl' mit Port 465
-    'username'   => 'info@schwarzer-baeren.ch',
-    'password'   => '18kaomWm1*', // E-Mail-Passwort aus dem Swizzonic-Panel
+    'host'       => 'smtp.gmail.com',
+    'port'       => 587,      // STARTTLS
+    'encryption' => 'tls',
+    'username'   => 'schwarzerbaren@gmail.com',   // volle Gmail-Adresse
+    'password'   => 'lesx ezqz tkjf dctr',     // 16-stelliges App-Passwort
   ],
 
   'max_message_len' => 5000,
   'honeypot_field'  => 'website',
   'rate_limit'      => ['requests' => 4, 'per_sec' => 3600],
 ];
-

@@ -333,18 +333,16 @@ main {
   flex: 1;
 }
 main {
+  padding: 5rem 1rem; /* oben & unten Abstand */
   display: flex;
   flex-direction: column;
-  align-items: center; /* horizontal zentriert */
-  justify-content: center; /* vertikal zentriert (optional) */
+  align-items: center;
   text-align: center;
-  min-height: 70vh; /* damit der Text mittig im Sichtbereich steht */
-  padding: 2rem;
 }
 
 main h1 {
-  margin-bottom: 1rem;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* entfernt extra Margin */
 }
 
 main p {
@@ -352,7 +350,9 @@ main p {
   line-height: 1.6;
   font-size: 1.1rem;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* kein extra Abstand */
 }
+
 
 
 /* ===============================
