@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,46 +15,46 @@
 
 <body>
   <header class="sticky">
-    
+
     <div class="off-screen-menu" id="mobileMenu">
-        <ul class="mobile-list">
-            <li><a href="index.html">Restaurant</a></li>
-            <li><a href="lounge.html">Lounge</a></li>
-            <li><a href="anlaese.html">Anlässe</a></li>
-            <li><a href="ueber-uns.html">Über uns</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
+      <ul class="mobile-list">
+        <li><a href="index.html">Restaurant</a></li>
+        <li><a href="lounge.html">Lounge</a></li>
+        <li><a href="anlaese.html">Anlässe</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
     </div>
 
-    
+
     <nav>
-        
-        <button class="ham-menu" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
 
-        
-        <h1 class="nav-title">Schwarzer Bären</h1>
+      <button class="ham-menu" aria-label="Menü öffnen" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-        
-        <ul class="top-nav">
-            <li><a href="index.html">Restaurant</a></li>
-            <li><a href="lounge.html">Lounge</a></li>
-            <li><a href="anlaese.html">Anlässe</a></li>
-            <li><a href="ueber-uns.html">Über uns</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
 
-        
-        <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzer Bären">
+      <h1 class="nav-title">Schwarzer Bären</h1>
+
+
+      <ul class="top-nav">
+        <li><a href="index.html">Restaurant</a></li>
+        <li><a href="lounge.html">Lounge</a></li>
+        <li><a href="anlaese.html">Anlässe</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+
+
+      <img class="logo-header" src="graphics/SB-Logo.png" alt="Logo Schwarzer Bären">
     </nav>
-</header>
+  </header>
 
 
   <main class="contact-wrap">
     <h1>Kontakt</h1>
 
-   
+
     <form id="contactForm" class="contact-grid" novalidate>
       <div>
         <label for="fromName">Ihr Name</label>
@@ -67,7 +68,8 @@
 
       <div>
         <label for="subject">Betreff</label>
-        <input id="subject" name="subject" type="text" placeholder="Reservierungsanfrage, Feedback, ..." maxlength="160" />
+        <input id="subject" name="subject" type="text" placeholder="Reservierungsanfrage, Feedback, ..."
+          maxlength="160" />
       </div>
 
       <div>
@@ -75,7 +77,7 @@
         <textarea id="message" name="message" required placeholder="Ihre Nachricht an uns ..."></textarea>
       </div>
 
-      
+
       <input class="hp" type="text" name="website" autocomplete="off" tabindex="-1" />
 
       <div class="contact-actions">
@@ -91,7 +93,7 @@
       <h3>Adresse</h3>
       <p>Speicherstrasse 151<br>9000 St. Gallen</p>
       <a href="https://www.google.com/maps/place/Schwarzer+B%C3%A4ren/@47.4219992,9.4135086,455m/data=!3m3!1e3!4b1!5s0x479b1ee746b3195d:0xf196311fb4d80aaa!4m6!3m5!1s0x479b1ee7472365b7:0x397f3ca9e4b4723b!8m2!3d47.4219992!4d9.4160835!16s%2Fg%2F1tf5cql3?entry=ttu&g_ep=EgoyMDI1MDYwMS4wIKXMDSoASAFQAw%3D%3D"
-         target="_blank">zu Google Maps →</a>
+        target="_blank">zu Google Maps →</a>
     </div>
 
     <div class="footer-section">
@@ -105,8 +107,8 @@
       <hr>
       <h3>Social-Seiten</h3>
       <div class="social-icons">
-        <a href="#"><img src="graphics/instagram-logo.png" alt="Instagram"></a>
-        <a href="#"><img src="graphics/facebook-icon.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/schwarzerbaren/"><img src="graphics/instagram-logo.svg" alt="Instagram"></a>
+        <a href="#"><img src="graphics/facebook-logo.svg" alt="Facebook" class="facebook"></a>
       </div>
     </div>
   </footer>
@@ -123,7 +125,7 @@
 
       // simple Frontend-Validierung
       const email = form.fromEmail.value.trim();
-      const msg   = form.message.value.trim();
+      const msg = form.message.value.trim();
       if (!email || !msg) {
         statusEl.textContent = 'Bitte E-Mail und Nachricht ausfüllen.';
         statusEl.className = 'status err';
@@ -158,4 +160,5 @@
     });
   </script>
 </body>
+
 </html>
